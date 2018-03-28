@@ -8,6 +8,9 @@ public class Either
 		System.out.println(new Human(new Weapon(new Magazine(2))));
 	}
 	
-	
-	
+	public static Object get()
+	{
+		Object o = null;
+		return o;
+	}
 }
