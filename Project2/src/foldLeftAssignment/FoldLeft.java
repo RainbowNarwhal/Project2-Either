@@ -19,19 +19,25 @@ public class FoldLeft
 		Stream<Stream<Integer>> ssi = lli.stream().map(List::stream);
 		
 		Stream<Integer> si = ssi.flatMap(x -> x);
-		//Stream<Integer> si = ssi.flatMap(Function.identity());
 		List<Integer> test = Arrays.asList(0);
 		
 		List<Integer> li = si.collect(Collectors.toList());
 		int total = sum(li);
 		int count = count(li);
-		//List<Integer> filter = foldLeft2(li, 0, (a,b) -> a);
+		List<Integer> filter = filter(li, a -> a % 2 != 0);
+		List<Integer> mapp = map(li, a -> a*2);
 		
 		System.out.println(total);
 		System.out.println(count);
-		//System.out.println(filter);
+		System.out.println(filter);
+		System.out.println(mapp);
 		System.out.println(li);
+		
+		List<String> ls = Arrays.asList("Mike", "Andrew", "Alex", "Matt", "Samson", "Mark");
+		List<String> flsOne = filter(ls, a -> a.charAt(0) == 'M');
+		System.out.println(flsOne);
 	}
+	
 	static Integer sum(List<Integer> li)
 	{
 		return foldLeft(li, 0, (a,b) -> a+b);
@@ -46,15 +52,47 @@ public class FoldLeft
 		});
 	}
 	
-	static <A> List<A> filter(List<A> li, Predicate<A> p)
+	static <A,B> List<B> filter(List<A> li, Predicate<A> p)
 	{
+		List<B> lst = new ArrayList<B>();
+		List<A> temp = new ArrayList<A>();
+		B value = null;
 		
-		return null;
+		for(A listItem : li)
+		{
+			temp.add(listItem);
+			value = foldLeft(temp, value, (a,b) -> {
+				if(p.test(a))
+				{
+					return (B) a;
+				}
+				else
+				{
+					return null;
+				}
+			});
+			if(value != null)
+			{
+				lst.add(value);
+			}
+		}
+		return lst;
 	}
 	
 	static <A,B> List<B> map(List<A> li, Function<A,B> f)
 	{
-		return null;
+		List<B> lst = new ArrayList<B>();
+		List<A> temp = new ArrayList<A>();
+		B value = null;
+		
+		for(A listItem : li)
+		{
+			temp.add(listItem);
+			value = foldLeft(temp, value, (a,b) -> f.apply(a));
+			lst.add(value);
+			temp.clear();
+		}
+		return lst;
 	}
 	
 	static <A,B> B foldLeft(List<A> lst, B identity, BiFunction<A,B,B> f)
@@ -66,17 +104,4 @@ public class FoldLeft
 		}
 		return accumulator;
 	}
-	
-	/*static <A,B,T> B foldLeft2(List<A> lst, B identity, BiFunction<A,B,B> f /*,Predicate<T> p)
-	{
-		B accumulator = f.apply(lst.get(0), accumulator);
-		
-		return accumulator;
-	}*/
 }
-
-// static int sum(int listItem, int total)
-// static int count(int listItem, int total)
-
-// static int filter(int listItem, List<Integer>)
-// static int map(int listItem, List<Integer>)
