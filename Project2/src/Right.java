@@ -20,14 +20,12 @@ public class Right<T> extends Either<T>
 
 	@Override
 	public T orElse(T replacement) {
-		// TODO Auto-generated method stub
-		return null;
+		return object;
 	}
 
 	@Override
 	public T orElseGet(Supplier<? extends T> replacement) {
-		// TODO Auto-generated method stub
-		return null;
+		return object;
 	}
 
 }

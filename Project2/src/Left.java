@@ -7,11 +7,6 @@ import java.util.function.Supplier;
  */
 public class Left<T> extends Either<T>
 {
-
-	public Left() {
-		
-	}
-
 	@Override
 	public T get() throws EmptyValueException {
 		// TODO Auto-generated method stub
@@ -20,14 +15,12 @@ public class Left<T> extends Either<T>
 
 	@Override
 	public T orElse(T replacement) {
-		// TODO Auto-generated method stub
-		return null;
+		return replacement;
 	}
 
 	@Override
 	public T orElseGet(Supplier<? extends T> replacement) {
-		// TODO Auto-generated method stub
-		return null;
+		return replacement.get();
 	}
 
 }
