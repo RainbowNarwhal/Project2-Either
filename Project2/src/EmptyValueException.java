@@ -8,8 +8,6 @@ public class EmptyValueException extends Exception
 	public EmptyValueException(String message)
 	{
 		this.message = message;
-		//message = "The value in this variable is null";
 		System.out.println(message);
-		System.exit(1);
 	}
 }

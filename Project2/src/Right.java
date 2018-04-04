@@ -15,7 +15,7 @@ public class Right<T> extends Either<T>
 	@Override
 	public T get() throws EmptyValueException {
 		// TODO Auto-generated method stub
-		return null;
+		return object;
 	}
 
 	@Override
