@@ -1,3 +1,4 @@
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -26,6 +27,23 @@ public class Right<T> extends Either<T>
 	@Override
 	public T orElseGet(Supplier<? extends T> replacement) {
 		return object;
+	}
+	
+	public String toString()
+	{
+		return "Either[" + object + "]";
+	}
+
+	@Override
+	public <U> Either<U> map(Function<? super T, ? extends U> mapper) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <U> Either<U> flatMap(Function<? super T, Either<U>> mapper) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

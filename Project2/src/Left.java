@@ -1,3 +1,4 @@
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -7,6 +8,12 @@ import java.util.function.Supplier;
  */
 public class Left<T> extends Either<T>
 {
+	String noValue;
+	
+	public Left(String problem)
+	{
+		noValue = problem;
+	}
 	@Override
 	public T get() throws EmptyValueException {
 		// TODO Auto-generated method stub
@@ -21,6 +28,20 @@ public class Left<T> extends Either<T>
 	@Override
 	public T orElseGet(Supplier<? extends T> replacement) {
 		return replacement.get();
+	}
+	
+	public String toString()
+	{
+		return "Either[" + noValue + "]";
+	}
+	
+	@Override
+	public <U> Either<U> map(Function<? super T, ? extends U> mapper) {
+		return new Left<U>(noValue);
+	}
+	@Override
+	public <U> Either<U> flatMap(Function<? super T, Either<U>> mapper) {
+		return new Left<U>(noValue);
 	}
 
 }

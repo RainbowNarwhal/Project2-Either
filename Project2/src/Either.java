@@ -5,12 +5,12 @@ public abstract class Either<T>
 {
 	T object;
 	
-	public Either<T> of(T obj)
+	public static <T> Either<T> of(T obj)
 	{
 		if(obj != null)
 			return new Right<T>(obj);
 		else
-			return new Left<T>();
+			return new Left<T>("null_passed_to_of");
 	}
 	
 	public abstract T get() throws EmptyValueException;
