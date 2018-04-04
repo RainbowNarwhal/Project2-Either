@@ -13,7 +13,7 @@ public class Right<T> extends Either<T>
 	}
 
 	@Override
-	public T get() throws Exception {
+	public T get() throws EmptyValueException {
 		// TODO Auto-generated method stub
 		return null;
 	}

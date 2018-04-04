@@ -12,7 +12,7 @@ public abstract class Either<T>
 			return new Left();
 	}
 	
-	public abstract T get() throws Exception;
+	public abstract T get() throws EmptyValueException;
 	
 	public abstract T orElse(T replacement);
 	
