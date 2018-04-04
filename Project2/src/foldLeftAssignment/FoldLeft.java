@@ -34,6 +34,7 @@ public class FoldLeft
 		System.out.println("map: " + mapp);
 		
 		List<String> ls = Arrays.asList("Mike", "Andrew", "Alex", "Matt", "Samson", "Mark");
+		
 		System.out.println("\nList: " + ls);
 		List<String> flsOne = filter(ls, a -> a.charAt(0) == 'M');
 		System.out.println("filter: " + flsOne);
