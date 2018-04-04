@@ -15,7 +15,7 @@ public class FoldLeft
 	public static void main(String[] args)
 	{
 		List<List<Integer>> lli = Arrays.asList(Arrays.asList(1,2,3), Arrays.asList(4,5,6), Arrays.asList(7,8,9));
-		System.out.println(lli);
+		System.out.println("pre-collect: " + lli);
 		Stream<Stream<Integer>> ssi = lli.stream().map(List::stream);
 		
 		Stream<Integer> si = ssi.flatMap(x -> x);
@@ -27,15 +27,18 @@ public class FoldLeft
 		List<Integer> filter = filter(li, a -> a % 2 != 0);
 		List<Integer> mapp = map(li, a -> a*2);
 		
-		System.out.println(total);
-		System.out.println(count);
-		System.out.println(filter);
-		System.out.println(mapp);
-		System.out.println(li);
+		System.out.println("list: " + li);
+		System.out.println("total: " + total);
+		System.out.println("count: " + count);
+		System.out.println("filter: " + filter);
+		System.out.println("map: " + mapp);
 		
 		List<String> ls = Arrays.asList("Mike", "Andrew", "Alex", "Matt", "Samson", "Mark");
+		System.out.println("\nList: " + ls);
 		List<String> flsOne = filter(ls, a -> a.charAt(0) == 'M');
-		System.out.println(flsOne);
+		System.out.println("filter: " + flsOne);
+		List<String> ammendedls = map(ls, a -> a+" Wright");
+		System.out.println("map: " + ammendedls);
 	}
 	
 	static Integer sum(List<Integer> li)
