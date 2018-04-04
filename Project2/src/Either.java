@@ -1,3 +1,4 @@
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public abstract class Either<T>
@@ -7,9 +8,9 @@ public abstract class Either<T>
 	public Either<T> of(T obj)
 	{
 		if(obj != null)
-			return new Right(obj);
+			return new Right<T>(obj);
 		else
-			return new Left();
+			return new Left<T>();
 	}
 	
 	public abstract T get() throws Exception;
@@ -17,5 +18,9 @@ public abstract class Either<T>
 	public abstract T orElse(T replacement);
 	
 	public abstract T orElseGet(Supplier<? extends T> replacement);	
+	
+	public abstract <U> Either<U> map(Function<? super T, ? extends U> mapper);
+	
+	public abstract <U> Either<U> flatMap(Function<? super T,Either<U>> mapper);
 	
 }
