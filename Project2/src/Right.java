@@ -15,7 +15,6 @@ public class Right<T> extends Either<T>
 
 	@Override
 	public T get() throws EmptyValueException {
-		// TODO Auto-generated method stub
 		return object;
 	}
 
@@ -36,8 +35,11 @@ public class Right<T> extends Either<T>
 
 	@Override
 	public <U> Either<U> map(Function<? super T, ? extends U> mapper) {
-		// TODO Auto-generated method stub
-		return null;
+		U newObject = mapper.apply(object);
+//		System.out.println(mapper.apply(object));
+		String message = this.object.getClass().toString();
+		
+		return Either.ofInternal(newObject, "Empty:NoValueFromInside" + message);
 	}
 
 	@Override

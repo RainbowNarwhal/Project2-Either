@@ -16,7 +16,10 @@ public class Left<T> extends Either<T>
 	}
 	@Override
 	public T get() throws EmptyValueException {
-		// TODO Auto-generated method stub
+		if (object == null)
+		{
+			throw new EmptyValueException(noValue);
+		}
 		return null;
 	}
 
