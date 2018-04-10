@@ -34,8 +34,9 @@ public class FoldLeft
 		System.out.println("map: " + mapp);
 		
 		List<String> ls = Arrays.asList("Mike", "Andrew", "Alex", "Matt", "Samson", "Mark");
-		
 		System.out.println("\nList: " + ls);
+		int wordCount = count(ls);
+		System.out.println("count: " + wordCount);
 		List<String> flsOne = filter(ls, a -> a.charAt(0) == 'M');
 		System.out.println("filter: " + flsOne);
 		List<String> ammendedls = map(ls, a -> a+" Wright");

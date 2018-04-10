@@ -8,7 +8,7 @@ public class Runner
 		
 		
 		
-		Human human = new Human(new Weapon(new Magazine(10)));
+		Human human = new Human(new Weapon(null));
 		Human humanNoWep = new Human(null);
 		Either<Human> eitherHuman = Either.of(human);
 		System.out.println(eitherHuman);
@@ -24,7 +24,7 @@ public class Runner
 		System.out.println();
 		
 		System.out.println(human.getWeapon());
-		System.out.println(eitherHuman.map(Human::getWeapon));
+		System.out.println(eitherHuman.map(Human::getWeapon).map(Weapon::getMag).map(Magazine::getCount));
 		System.out.println(humanNoWep.getWeapon());
 		System.out.println(eitherNoWep.map(Human::getWeapon));
 		

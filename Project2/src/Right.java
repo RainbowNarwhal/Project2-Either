@@ -38,8 +38,8 @@ public class Right<T> extends Either<T>
 		U newObject = mapper.apply(object);
 //		System.out.println(mapper.apply(object));
 		String message = this.object.getClass().toString();
-		
-		return Either.ofInternal(newObject, "Empty:NoValueFromInside" + message);
+		String split[] = message.split("\\s+");
+		return Either.ofInternal(newObject, "Empty:FailedToGetValueInside" + split[1]);
 	}
 
 	@Override
