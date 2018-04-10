@@ -11,6 +11,11 @@
 		public Weapon getWeapon() {
 			return w;
 		}
+		
+		//testing purposes only, remove
+		public Either<Weapon> getWeaponEither(){
+			return Either.of(w);
+		}
 	}
 	
 	class Weapon
@@ -21,6 +26,11 @@
 		
 		public Magazine getMag() {
 			return m;
+		}
+		
+		//testing, remove
+		public Either<Magazine> getMagEither(){
+			return Either.of(m);
 		}
 	}
 	

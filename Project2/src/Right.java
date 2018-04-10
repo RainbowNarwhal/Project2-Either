@@ -44,8 +44,11 @@ public class Right<T> extends Either<T>
 
 	@Override
 	public <U> Either<U> flatMap(Function<? super T, Either<U>> mapper) {
-		// TODO Auto-generated method stub
-		return null;
+		Either<U> newEither = mapper.apply(object);
+		U newObject = newEither.orElse(null);
+		String message = this.object.getClass().toString();
+		String split[] = message.split("\\s+");
+		return Either.ofInternal(newObject, "Empty:FailedToGetValueInside" + split[1]);
 	}
 
 }

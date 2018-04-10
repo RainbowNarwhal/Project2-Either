@@ -3,7 +3,7 @@ import java.util.function.Supplier;
 
 public abstract class Either<T>
 {
-	T object =null;
+	T object = null;
 	
 	public static <T> Either<T> of(T obj)
 	{

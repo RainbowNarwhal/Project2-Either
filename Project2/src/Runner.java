@@ -28,5 +28,9 @@ public class Runner
 		System.out.println(humanNoWep.getWeapon());
 		System.out.println(eitherNoWep.map(Human::getWeapon));
 		
+		System.out.println();
+		
+		System.out.println(eitherHuman.flatMap(Human::getWeaponEither).flatMap(Weapon::getMagEither));
+		
 	}
 }
