@@ -2,7 +2,7 @@ import java.util.Optional;
 
 public class Runner 
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws EmptyValueException
 	{
 		/*Human h = new Human(null);
 				
@@ -51,6 +51,16 @@ public class Runner
 		System.out.println(noMagE.flatMap(Human::getWeaponEither).flatMap(Weapon::getMagEither).flatMap(Magazine::getCountEither));
 		System.out.println(hasAllE.flatMap(Human::getWeaponEither).flatMap(Weapon::getMagEither).flatMap(Magazine::getCountEither));
 
+		System.out.println();
+		System.out.println(noWeaponE.get());
+		Either<Weapon> emptyWeaponE = noWeaponE.map(Human::getWeapon);
+		System.out.println(emptyWeaponE.orElse(new Weapon(null)));
+		System.out.println(emptyWeaponE.orElseGet(( () -> hasAll.getWeapon() )));
 		
+		System.out.println();
+		Either<Weapon> WeaponE = hasAllE.map(Human::getWeapon);
+		System.out.println(WeaponE.get());
+		System.out.println(WeaponE.orElse(new Weapon(null)));
+		System.out.println(WeaponE.orElseGet( () -> hasAll.getWeapon() ));
 	}
 }
