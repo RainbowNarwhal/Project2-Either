@@ -12,7 +12,7 @@
 			return w;
 		}
 		
-		//testing purposes only, remove
+		//new method to use for flatMap
 		public Either<Weapon> getWeaponEither(){
 			return Either.of(w);
 		}
@@ -28,7 +28,7 @@
 			return m;
 		}
 		
-		//testing, remove
+		//new method to use for flatMap
 		public Either<Magazine> getMagEither(){
 			return Either.of(m);
 		}
@@ -41,4 +41,9 @@
 		public Magazine(int c) {count = c;}
 		
 		public int getCount() {return count;}
+		
+		//new method to use for flatMap
+		public Either<Integer> getCountEither(){
+			return Either.of(count);
+		}
 	}
